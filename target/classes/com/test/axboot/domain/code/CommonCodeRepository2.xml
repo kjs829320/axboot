@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.test.axboot.domain.code.CommonCodeRepository2">
+    	
+    <select id="findAll" resultType="commonCode">
+ SELECT COMMON_CODE_M.GROUP_CD AS GROUPCD,
+        MAX(COMMON_CODE_M.GROUP_NM) AS GROUPNM,
+        MAX(COMMON_CODE_M.CODE) AS code,
+        MAX(COMMON_CODE_M.CREATED_AT) AS CREATED_3_2_,
+        MAX(COMMON_CODE_M.CREATED_BY) AS CREATED_4_2_,
+        MAX(COMMON_CODE_M.UPDATED_AT) AS UPDATED_5_2_,
+        MAX(COMMON_CODE_M.UPDATED_BY) AS UPDATED_6_2_,
+        MAX(COMMON_CODE_M.DATA1) AS DATA7_2_,
+        MAX(COMMON_CODE_M.DATA2) AS DATA8_2_,
+        MAX(COMMON_CODE_M.DATA3) AS DATA9_2_,
+        MAX(COMMON_CODE_M.DATA4) AS DATA10_2_,
+        MAX(COMMON_CODE_M.DATA5) AS DATA11_2_,
+        MAX(COMMON_CODE_M.NAME) AS NAME13_2_,
+        MAX(COMMON_CODE_M.REMARK) AS REMARK14_2_,
+        MAX(COMMON_CODE_M.SORT) AS SORT,
+        MAX(COMMON_CODE_M.USE_YN) AS USE_YN16_2_ 
+    FROM
+        COMMON_CODE_M COMMON_CODE_M 
+    WHERE
+        COMMON_CODE_M.USE_YN='Y' 
+    GROUP BY GROUP_CD   
+    ORDER BY
+        COMMON_CODE_M.GROUP_NM ASC,
+        SORT ASC
+    </select>
+</mapper>
