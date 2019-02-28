@@ -36,7 +36,14 @@ public class CommonFile extends BaseJpaModel<Long> {
     @Column(name = "ID")
     @Comment(value = "ID")
     @ColumnPosition(1)
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    //@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator="SEQ_FILE_L")
+    @SequenceGenerator( 
+            name="SEQ_FILE_L", 
+            sequenceName="SEQ_FILE_L",
+            allocationSize = 1,
+            initialValue = 11
+        )
     private Long id;
 
     @Column(name = "TARGET_TYPE", length = 50)

@@ -1,27 +1,39 @@
 package com.test.axboot.domain.program.menu;
 
-import com.test.axboot.domain.BaseJpaModel;
-import com.test.axboot.domain.program.Program;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
+
+import javax.persistence.Column;
+import javax.persistence.Convert;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+import javax.servlet.http.HttpServletRequest;
+
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
+
 import com.chequer.axboot.core.annotations.ColumnPosition;
 import com.chequer.axboot.core.annotations.Comment;
 import com.chequer.axboot.core.jpa.JsonNodeConverter;
-import com.chequer.axboot.core.utils.JsonUtils;
 import com.chequer.axboot.core.utils.RequestUtils;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.JsonNode;
+import com.test.axboot.domain.BaseJpaModel;
+import com.test.axboot.domain.program.Program;
+
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import org.hibernate.annotations.DynamicInsert;
-import org.hibernate.annotations.DynamicUpdate;
-
-import javax.persistence.*;
-import javax.servlet.http.HttpServletRequest;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
 
 
 @Setter
@@ -38,7 +50,14 @@ public class Menu extends BaseJpaModel<Long> implements Cloneable {
     @Id
     @Column(name = "MENU_ID", precision = 20, nullable = false)
     @Comment(value = "ID")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    //@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator="SEQ_MENU_M")
+    @SequenceGenerator( 
+            name="SEQ_MENU_M", 
+            sequenceName="SEQ_MENU_M",
+            allocationSize = 1,
+            initialValue = 11
+        )
     @ColumnPosition(1)
     private Long menuId;
 
@@ -63,7 +82,7 @@ public class Menu extends BaseJpaModel<Long> implements Cloneable {
     @ColumnPosition(5)
     private Long parentId;
 
-    @Column(name = "LEVEL", precision = 10)
+    @Column(name = "DEPTH", precision = 10)
     @Comment(value = "레벨")
     @ColumnPosition(6)
     private Integer level;

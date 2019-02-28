@@ -31,7 +31,14 @@ public class ErrorLog extends SimpleJpaModel<Long> implements AXBootErrorLog {
     @Column(name = "ID", precision = 20)
     @ColumnPosition(1)
     @Comment(value = "ID")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator="SEQ_ERROR_LOG_M")
+    @SequenceGenerator( 
+            name="SEQ_ERROR_LOG_M", 
+            sequenceName="SEQ_ERROR_LOG_M",
+            allocationSize = 1,
+            initialValue = 11
+        )
+    //@GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "PHASE", length = 10)

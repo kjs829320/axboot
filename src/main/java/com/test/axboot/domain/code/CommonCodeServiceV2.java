@@ -46,9 +46,9 @@ public class CommonCodeServiceV2 extends BaseService<CommonCode, CommonCodeId> {
         {
         	tupleList = select()
     				.from(qCommonCode)
-    				.select(qCommonCode.groupCd,(qCommonCode.groupNm).max().as(qCommonCode.groupNm),(qCommonCode.code).max().as(qCommonCode.code))
+    				.select(qCommonCode.groupCd, qCommonCode.groupNm,(qCommonCode.code).max().as(qCommonCode.code))
     				.where(builder)
-    				.groupBy(qCommonCode.groupCd)
+    				.groupBy(qCommonCode.groupCd, qCommonCode.groupNm)
     				.orderBy(qCommonCode.groupCd.asc(), qCommonCode.groupNm.asc())
     				.fetch();
     		for(int i =0;i<tupleList.size();i++) 

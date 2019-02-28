@@ -27,7 +27,14 @@ public class UserRole extends BaseJpaModel<Long> {
     @Id
     @Column(name = "ID", precision = 19, nullable = false)
     @Comment(value = "ID")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator="SEQ_USER_ROLE_M")
+    @SequenceGenerator( 
+            name="SEQ_USER_ROLE_M", 
+            sequenceName="SEQ_USER_ROLE_M",
+            allocationSize = 1,
+            initialValue = 11
+        )
+    //@GeneratedValue(strategy = GenerationType.IDENTITY)
     @ColumnPosition(1)
     private Long id;
 
