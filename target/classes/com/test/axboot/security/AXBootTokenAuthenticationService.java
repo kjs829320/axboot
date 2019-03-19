@@ -88,7 +88,7 @@ public class AXBootTokenAuthenticationService {
         if (!requestUri.startsWith(ContextUtil.getBaseApiPath())) {
             if (menuId > 0) {
                 Menu menu = menuService.findOne(menuId);
-
+                System.out.println("menuId=========================="+menuId);
                 if (menu != null) {
                     Program program = menu.getProgram();
 
@@ -96,7 +96,7 @@ public class AXBootTokenAuthenticationService {
                         requestUtils.setAttribute("program", program);
                         requestUtils.setAttribute("pageName", menu.getLocalizedMenuName(request));
                         requestUtils.setAttribute("pageRemark", program.getRemark());
-
+                        System.out.println(menu.getLocalizedMenuName(request));
                         if (program.getAuthCheck().equals(AXBootTypes.Used.YES.getLabel())) {
                             AuthGroupMenu authGroupMenu = authGroupMenuService.getCurrentAuthGroupMenu(menuId, user);
                             if (authGroupMenu == null) {

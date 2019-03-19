@@ -5,6 +5,7 @@ import java.io.Serializable;
 import com.chequer.axboot.core.domain.base.AXBootBaseService;
 import com.chequer.axboot.core.domain.base.AXBootJPAQueryDSLRepository;
 import com.test.axboot.domain.account.QAccount;
+import com.test.axboot.domain.cmCust.QCmCust;
 import com.test.axboot.domain.code.QCommonCode;
 import com.test.axboot.domain.file.QCommonFile;
 import com.test.axboot.domain.prdt.QProduct;
@@ -28,6 +29,7 @@ public class BaseService<T, ID extends Serializable> extends AXBootBaseService<T
     protected QCommonFile qCommonFile = QCommonFile.commonFile;
     protected QProduct qProduct = QProduct.product; //추가
     protected QAccount qAccount = QAccount.account; //추가
+    protected QCmCust qCmCust = QCmCust.cmCust; //추가
 
     protected AXBootJPAQueryDSLRepository<T, ID> repository;
 

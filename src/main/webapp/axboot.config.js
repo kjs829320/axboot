@@ -42,6 +42,14 @@
                     url: "/jsp/system/system-config-common-code-modal.jsp"
                 },
                 header: false
+            },
+            "USER_CODE_MODAL": {
+                width: 500,
+                height: 500,
+                iframe: {
+                	url: "/jsp/common/user.jsp"
+                },
+                header: false
             }
         };
     }

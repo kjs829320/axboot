@@ -6,6 +6,8 @@ var ACTIONS = axboot.actionExtend(fnObj, {
             url: ["commonCodes2"],
             data: caller.searchView.getData(),
             callback: function (res) {
+            	console.log("res");
+            	console.log(res);
                 caller.gridView01.setData(res);
             }
         });

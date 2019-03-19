@@ -160,7 +160,7 @@ fnObj.gridView01 = axboot.viewExtend(axboot.gridView, {
             	  }
             	},*/
             	{key: "prdtCd", label: "제품코드", width: 100, align: "center", editor: {type: "text", disabled: "notCreated"}},
-                {key: "prdtNm", label: "제품명", width: 200, align: "center", editor: "textBtn"},
+                {key: "prdtNm", label: "제품명", width: 200, align: "center", editor: {type: "text", disabled: "notCreated"}},
                 {key: "origin", label: "원산지", width: 100,align: "center", editor: {
                     type: "select", config: {
                         columnKeys: {
